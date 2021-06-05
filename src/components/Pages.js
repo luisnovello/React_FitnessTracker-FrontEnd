@@ -4,9 +4,14 @@ import {
   HOME_ROUTE,
   ROUTINES_ROUTE,
   MY_ROUTINES_ROUTE,
+  LOGIN_ROUTE,
+  REGISTER_ROUTE,
 } from "../constants";
 
-const Pages = () => {
+import Login from "./Login";
+
+const Pages = (props) => {
+  const { setUserLogin } = props;
   return (
     <>
       <Route path={HOME_ROUTE}>
@@ -20,6 +25,12 @@ const Pages = () => {
       </Route>
       <Route path={ACTIVITIES_ROUTE}>
         <h1>Activities Page</h1>
+      </Route>
+      <Route path={LOGIN_ROUTE}>
+        <Login />
+      </Route>
+      <Route path={REGISTER_ROUTE}>
+        <h1>Register</h1>
       </Route>
     </>
   );
