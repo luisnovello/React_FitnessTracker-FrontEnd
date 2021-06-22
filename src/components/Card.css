@@ -1,0 +1,15 @@
+.card-container {
+  background: rgb(193, 193, 223);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  min-height: 100%;
+}
+
+.card {
+  background-color: rgb(41, 40, 40);
+  color: white;
+  margin: 30px;
+  border: solid white 1px;
+  padding: 10px;
+  max-height: 200px;
+}

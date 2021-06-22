@@ -24,13 +24,13 @@ const Register = () => {
     }
   };
 
-  const onFormSubmit = (event) => {
+  const onRegisterSubmit = (event) => {
     event.preventDefault();
     registerUser();
   };
   return (
     <>
-      <form noValidate autoComplete="off" onSubmit={onFormSubmit}>
+      <form noValidate autoComplete="off" onSubmit={onRegisterSubmit}>
         <TextField
           id="Username"
           label="Username"
