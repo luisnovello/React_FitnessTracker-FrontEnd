@@ -1,12 +1,6 @@
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Button,
-} from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./Card.css";
 
 const BASE_URL = "https://fitnesstrac-kr.herokuapp.com/api";
 
@@ -72,32 +66,24 @@ const MyRoutines = () => {
   };
 
   return (
-    <>
+    <div className="card-container">
       {!myRoutines ? (
         <h1>Create a Routine</h1>
       ) : (
         myRoutines.map((routine) => {
           return (
-            <Card className="card" key={routine.id}>
-              <CardHeader></CardHeader>
-              <CardContent key={routine.id}>
-                <div>ID:{routine.id}</div>
-                <div>Name:{routine.name}</div>
-                <div>Goal:{routine}</div>
-                <div>Creator Name:{routine.creatorName}</div>
-                <div>Is Public:{routine.isPublic}</div>
-              </CardContent>
+            <div className="card" key={routine.id}>
               <div>
-                <CardActions>
-                  <Button size="small">Edit</Button>
-                  <Button size="small">Delete</Button>
-                </CardActions>
+                <div>Routine: {routine.name}</div>
+                <div>Goal: {routine.goal}</div>
+                <div>Creator: {routine.creatorName}</div>
+                <div>Is Public:{routine.isPublic}</div>
               </div>
-            </Card>
+            </div>
           );
         })
       )}
-    </>
+    </div>
   );
 };
 

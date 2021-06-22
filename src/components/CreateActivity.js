@@ -1,38 +1,39 @@
-import { Button, Checkbox, TextField } from "@material-ui/core";
 import axios from "axios";
 import { useState } from "react";
+import "./Home.css";
 
 const BASE_URL = "https://fitnesstrac-kr.herokuapp.com/api";
 
 const CreateActivityForm = () => {
   const [name, setName] = useState();
-  const [goal, setGoal] = useState();
-  const [checked, setChecked] = useState(true);
-
-  const handleChange = (event) => {
-    event.preventDefault();
-    setChecked(event.target.checked);
-  };
+  const [description, setDescription] = useState();
 
   const createActivity = async () => {
     const myToken = JSON.parse(localStorage.getItem("token"));
 
+    const activitiesBody = {
+      name,
+      description,
+    };
+
     const url = `${BASE_URL}/activities`;
 
     try {
-      const response = await axios.post(url, {
+      const response = await axios.post(url, activitiesBody, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${myToken}`,
         },
         data: {
           name,
-          goal,
-          checked,
+          description,
         },
       });
-
-      console.log(response);
+      if (response) {
+        alert("Activity Created");
+      } else {
+        alert("Activity Not Created, Try Again");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -41,31 +42,39 @@ const CreateActivityForm = () => {
   const onFormSubmit = (event) => {
     event.preventDefault();
     createActivity();
+    window.location.reload();
   };
 
   return (
-    <>
-      <form className="createActivity" onSubmit={onFormSubmit}>
-        <div>
-          <TextField
-            required
-            label="Activity Name"
+    <div className="create-activity">
+      <div className="activity">
+        <form className="form-container" onSubmit={onFormSubmit}>
+          <label for="act-name">Activity Name:</label>
+          <input
+            type="text"
+            id="act-name"
+            placeholder="Activity"
             onInput={(event) => {
               setName(event.target.value);
             }}
-          />
-          <TextField
             required
-            label="Activity Goal"
+          />{" "}
+          <br />
+          <label for="act-desc">Activity Description</label>
+          <input
+            type="text"
+            id="act-desc"
+            placeholder="Description"
             onInput={(event) => {
-              setGoal(event.target.value);
+              setDescription(event.target.value);
             }}
+            required
           />
-          <Checkbox checked={checked} onChange={handleChange} color="primary" />
-        </div>
-        <Button type="submit">Create Activity</Button>
-      </form>
-    </>
+          <br />
+          <button type="submit">Create Activity</button>
+        </form>
+      </div>
+    </div>
   );
 };
 

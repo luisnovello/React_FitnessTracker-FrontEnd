@@ -24,14 +24,14 @@ const Login = () => {
     }
   };
 
-  const onFormSubmit = (event) => {
+  const onLoginSubmit = (event) => {
     event.preventDefault();
     loginUser();
   };
 
   return (
     <>
-      <form noValidate autoComplete="off" onSubmit={onFormSubmit}>
+      <form noValidate autoComplete="off" onSubmit={onLoginSubmit}>
         <TextField
           id="Username"
           label="Username"
