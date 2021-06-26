@@ -50,7 +50,6 @@ const MyRoutines = () => {
     if (myToken) {
       myUsername = await myUsernameFetch(myToken);
       const routines = await myRoutinesFetch(myUsername, myToken);
-      console.log(routines);
       setMyRoutines(routines);
     }
   }, []);

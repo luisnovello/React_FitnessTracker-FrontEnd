@@ -22,6 +22,8 @@ const Navigation = () => {
     }
   }, []);
 
+  // console.log(authenticated);
+
   return (
     <>
       {authenticated ? (
