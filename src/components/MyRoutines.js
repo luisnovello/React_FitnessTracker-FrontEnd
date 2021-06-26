@@ -43,7 +43,6 @@ const myRoutinesFetch = async (username, myToken) => {
 const MyRoutines = () => {
   let myUsername;
   const [myRoutines, setMyRoutines] = useState([]);
-  const [editMode, setEditMode] = useState(false);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
@@ -55,15 +54,6 @@ const MyRoutines = () => {
       setMyRoutines(routines);
     }
   }, []);
-
-  const onEdit = () => {
-    setEditMode(true);
-  };
-
-  const onSave = (id) => {
-    setEditMode(false);
-    console.log(id);
-  };
 
   return (
     <div className="card-container">

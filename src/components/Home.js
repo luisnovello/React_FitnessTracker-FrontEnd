@@ -1,4 +1,3 @@
-import { TextField, Button } from "@material-ui/core";
 import axios from "axios";
 import { useState } from "react";
 
@@ -20,17 +19,15 @@ const Home = () => {
 
       const { token } = response.data;
 
-      localStorage.setItem("token", JSON.stringify(token));
+      localStorage.setItem("token", token);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const onLoginSubmit = (event) => {
+  const onLoginSubmit = async (event) => {
     event.preventDefault();
-    console.log("LOGIN", username, password);
-    loginUser();
-    console.log("Login", username, password);
+    await loginUser();
     window.location.reload();
   };
 
@@ -43,17 +40,16 @@ const Home = () => {
       });
       const { token } = response.data;
 
-      localStorage.setItem("token", JSON.stringify(token));
+      localStorage.setItem("token", token);
     } catch (error) {
       debugger;
       throw error;
     }
   };
 
-  const onRegisterSubmit = (event) => {
+  const onRegisterSubmit = async (event) => {
     event.preventDefault();
-    registerUser();
-    console.log("Register", username, password);
+    await registerUser();
     window.location.reload();
   };
 

@@ -5,7 +5,6 @@ import "./Navigation.css";
 
 import {
   ACTIVITIES_ROUTE,
-  HOME_ROUTE,
   MY_ROUTINES_ROUTE,
   ROUTINES_ROUTE,
   CREATE_ROUTINE,
@@ -25,7 +24,7 @@ const Navigation = () => {
 
   return (
     <>
-      {authenticated && (
+      {authenticated ? (
         <div className="toolbar">
           <Link to={ROUTINES_ROUTE}>Routines</Link>
           <Link to={MY_ROUTINES_ROUTE}>My Routines</Link>
@@ -33,12 +32,9 @@ const Navigation = () => {
           <Link to={CREATE_ROUTINE}>Create Routine</Link>
           <Link to={CREATE_ACTIVITY}>Create Activity</Link>
         </div>
+      ) : (
+        <div className="toolbar">Login to Continue</div>
       )}
-      {/* {!authenticated && (
-            <>
-              <Link to={HOME_ROUTE}>Home</Link>
-            </>
-          )} */}
     </>
   );
 };
